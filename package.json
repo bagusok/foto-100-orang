@@ -6,11 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.1.1",
-    "@react-pdf/renderer": "^3.1.12",
     "autoprefixer": "10.4.15",
     "axios": "^1.4.0",
     "eslint": "8.47.0",

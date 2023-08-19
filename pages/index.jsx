@@ -1,6 +1,4 @@
 import { prisma } from "@/utils/db";
-import { Document, Page, View, Text, PDFViewer } from "@react-pdf/renderer";
-import { Image, StyleSheet } from "@react-pdf/renderer";
 
 export default function Home({ data }) {
   return (
