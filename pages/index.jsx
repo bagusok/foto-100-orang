@@ -68,12 +68,12 @@ export default function Home({ data }) {
                       >
                         Motto
                       </th>
-                      <td className="px-6 py-1"></td>
+                      <td className="px-6 py-1">{item?.motto}</td>
                     </tr>
                     <tr className="border border-gray-200 dark:border-gray-700">
                       <th
                         style={{
-                          height: "1cm",
+                          height: "1.5cm",
                         }}
                         scope="row"
                         className="px-6 text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
