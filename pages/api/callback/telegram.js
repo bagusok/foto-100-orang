@@ -2,6 +2,7 @@ import axios from "axios";
 import ImageKit from "imagekit";
 // import prisma from "../../../utils/db";
 import { PrismaClient } from "@prisma/client";
+import { dataOrang } from "@/utils/data-orang";
 
 const prisma = new PrismaClient();
 
@@ -35,7 +36,51 @@ export default async function handler(req, res) {
     "/" +
     getPhotoData.data.result.file_path;
 
-  console.log(photoUrl);
+  let name, ttl, tlp, address, motto;
+
+  if (body.message.caption.startsWith("/id")) {
+    const id = body.message.caption.split(" ")[1];
+    const findData = dataOrang.find((item) => item.id == id);
+    if (findData) {
+      await axios.post(
+        "https://api.telegram.org/bot" +
+          process.env.TELEGRAM_TOKEN +
+          "/sendMessage",
+        {
+          chat_id: body.message.chat.id,
+          text: `Nama: ${findData.name}\nTTL: ${findData.ttl}\nTelepon: ${findData.telepon}\nAlamat: ${findData.asal}`,
+        }
+      );
+
+      name = findData.name;
+      ttl = findData.ttl;
+      tlp = findData.telepon;
+      address = findData.asal;
+      motto = findData.motto;
+    } else {
+      await axios.post(
+        "https://api.telegram.org/bot" +
+          process.env.TELEGRAM_TOKEN +
+          "/sendMessage",
+        {
+          chat_id: body.message.chat.id,
+          text: `Data tidak ditemukan.`,
+        }
+      );
+
+      name = "Unknown Name";
+      ttl = "";
+      tlp = "";
+      address = "";
+      motto = "";
+    }
+  } else {
+    const spliter = body.message.caption.split("\n");
+    name = spliter[0] == "-" ? "" : spliter[0];
+    ttl = spliter[1] == "-" ? "" : spliter[1];
+    tlp = spliter[2] == "-" ? "" : spliter[2];
+    address = spliter[3] == "-" ? "" : spliter[3];
+  }
 
   try {
     const uploadImagekit = await imagekit.upload({
@@ -44,12 +89,6 @@ export default async function handler(req, res) {
       folder: "/telegram",
       useUniqueFileName: true,
     });
-
-    const spliter = body.message.caption.split("\n");
-    const name = spliter[0] == "-" ? "" : spliter[0];
-    const ttl = spliter[1] == "-" ? "" : spliter[1];
-    const tlp = spliter[2] == "-" ? "" : spliter[2];
-    const address = spliter[3] == "-" ? "" : spliter[3];
 
     const cropImage = uploadImagekit.url + "?tr=w-354,h-472,fo-auto";
 
