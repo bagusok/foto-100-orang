@@ -1,6 +1,5 @@
 import axios from "axios";
 import ImageKit from "imagekit";
-// import prisma from "../../../utils/db";
 import { PrismaClient } from "@prisma/client";
 import { dataOrang } from "@/utils/data-orang";
 
@@ -17,7 +16,7 @@ export default async function handler(req, res) {
     return res.status(405).json({ message: "Ngapain lu!" });
 
   const body = req.body;
-  console.log(body);
+  // console.log(body);
 
   const countPhoto = body.message.photo.length;
 
@@ -28,7 +27,7 @@ export default async function handler(req, res) {
       body.message.photo[countPhoto - 1]?.file_id
   );
 
-  console.log("getPhotoData", getPhotoData);
+  // console.log("getPhotoData", getPhotoData);
 
   const photoUrl =
     "https://api.telegram.org/file/bot" +
@@ -38,9 +37,10 @@ export default async function handler(req, res) {
 
   let name, ttl, tlp, address, motto;
 
-  if (body.message.caption.startsWith("/id")) {
+  if (body.message.caption.includes("/id")) {
     const id = body.message.caption.split(" ")[1];
     const findData = dataOrang.find((item) => item.id == id);
+    // console.log("findData", findData);
     if (findData) {
       await axios.post(
         "https://api.telegram.org/bot" +
@@ -48,11 +48,11 @@ export default async function handler(req, res) {
           "/sendMessage",
         {
           chat_id: body.message.chat.id,
-          text: `Nama: ${findData.name}\nTTL: ${findData.ttl}\nTelepon: ${findData.telepon}\nAlamat: ${findData.asal}`,
+          text: `Nama: ${findData.nama}\nTTL: ${findData.ttl}\nTelepon: ${findData.telepon}\nAlamat: ${findData.asal}\nMotto: ${findData.motto}\nKelompok: ${findData.kelompok}`,
         }
       );
 
-      name = findData.name;
+      name = findData.nama;
       ttl = findData.ttl;
       tlp = findData.telepon;
       address = findData.asal;
@@ -98,6 +98,7 @@ export default async function handler(req, res) {
         ttl: ttl,
         telepon: tlp,
         asal: address,
+        motto: motto,
         photoUrl: cropImage,
       },
     });
