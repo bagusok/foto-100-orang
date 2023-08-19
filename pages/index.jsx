@@ -15,7 +15,7 @@ export default function Home({ data }) {
               <div className="w-fit">
                 <h2 className="font-bold">{index + 1}</h2>
               </div>
-              <div className="w-fit ml-3">
+              <div className="w-[3cm] ml-3">
                 <img
                   src={item.photoUrl}
                   alt=""
@@ -28,11 +28,11 @@ export default function Home({ data }) {
                     <tr className="border border-gray-200 dark:border-gray-700">
                       <th
                         scope="row"
-                        className="px-6 py-1 text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
+                        className="px-6 py-1 w-[5cm] text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
                       >
                         Nama
                       </th>
-                      <td className="px-6 py-1">{item.name}</td>
+                      <td className="px-6 py-1 w-[10cm]">{item.name}</td>
                     </tr>
                     <tr className="border border-gray-200 dark:border-gray-700">
                       <th
