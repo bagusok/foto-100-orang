@@ -9,16 +9,18 @@ export default function Home({ data }) {
         //   padding: "2cm 2cm 2cm 3cm",
         // }}
       >
-        {data.map((item) => {
+        {data.map((item, index) => {
           return (
             <div className="flex" key={item.id}>
               <div className="w-fit">
+                <h2 className="font-bold">{index + 1}</h2>
+              </div>
+              <div className="w-fit ml-3">
                 <img
                   src={item.photoUrl}
                   alt=""
                   style={{ height: "4cm", width: "3cm" }}
                 />
-                {/* <p>{JSON.stringify(data)}</p> */}
               </div>
               <div className="w-fit">
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 ml-3">
@@ -159,7 +161,7 @@ export default function Home({ data }) {
 export async function getServerSideProps() {
   const getData = await prisma.user.findMany({
     orderBy: {
-      created: "asc",
+      created: "desc",
     },
   });
 
