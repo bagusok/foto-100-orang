@@ -1,0 +1,22 @@
+// schema.prisma
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider  = "postgresql"
+    url       = env("POSTGRES_URL_POL") // uses connection pooling
+    directUrl = env("POSTGRES_URL") // bypasses connection pooling
+}
+
+model User {
+    id       Int      @id @default(autoincrement())
+    name     String?
+    ttl      String?  @default("")
+    telepon  String?  @default("")
+    asal     String?  @default("")
+    motto    String?  @default("")
+    photoUrl String?
+    created  DateTime @default(now())
+}
