@@ -20,69 +20,69 @@ export default function Home({ data }) {
                 />
                 {/* <p>{JSON.stringify(data)}</p> */}
               </div>
-              <div className="w-fit p-2 rounded-md ">
-                <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+              <div className="w-fit">
+                <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 ml-3">
                   <tbody>
                     <tr className="border border-gray-200 dark:border-gray-700">
                       <th
                         scope="row"
-                        class="px-6 py-1 text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
+                        className="px-6 py-1 text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
                       >
                         Nama
                       </th>
-                      <td class="px-6 py-1">{item.name}</td>
+                      <td className="px-6 py-1">{item.name}</td>
                     </tr>
                     <tr className="border border-gray-200 dark:border-gray-700">
                       <th
                         scope="row"
-                        class="px-6 py-1 text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
+                        className="px-6 py-1 text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
                       >
                         Tempat, Tanggal Lahir
                       </th>
-                      <td class="px-6 py-1">{item.ttl}</td>
+                      <td className="px-6 py-1">{item.ttl}</td>
                     </tr>
                     <tr className="border border-gray-200 dark:border-gray-700">
                       <th
                         scope="row"
-                        class="px-6 py-1 text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
+                        className="px-6 py-1 text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
                       >
                         Nomer Hp
                       </th>
-                      <td class="px-6 py-1">{item.telepon}</td>
+                      <td className="px-6 py-1">{item.telepon}</td>
                     </tr>
                     <tr className="border border-gray-200 dark:border-gray-700">
                       <th
                         scope="row"
-                        class="px-6 py-1 text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
+                        className="px-6 py-1 text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
                       >
                         Asal Daerah
                       </th>
-                      <td class="px-6 py-1">{item.asal}</td>
+                      <td className="px-6 py-1">{item.asal}</td>
                     </tr>
                     <tr className="border border-gray-200 dark:border-gray-700">
                       <th
                         scope="row"
-                        class="px-6 py-1 text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
+                        className="px-6 py-1 text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
                       >
                         Motto
                       </th>
-                      <td class="px-6 py-1"></td>
+                      <td className="px-6 py-1"></td>
                     </tr>
                     <tr className="border border-gray-200 dark:border-gray-700">
                       <th
                         style={{
-                          height: "2cm",
+                          height: "1cm",
                         }}
                         scope="row"
-                        class="px-6 text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
+                        className="px-6 text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800"
                       >
                         Tanda Tangan
                       </th>
                       <td
-                        style={{
-                          height: "2cm",
-                        }}
-                        class="px-6"
+                        // style={{
+                        //   height: "1cm",
+                        // }}
+                        className="px-6"
                       ></td>
                     </tr>
                   </tbody>

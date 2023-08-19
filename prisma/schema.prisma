@@ -17,6 +17,7 @@ model User {
     telepon  String?  @default("")
     asal     String?  @default("")
     motto    String?  @default("")
+    isHide   Boolean? @default(false)
     photoUrl String?
     created  DateTime @default(now())
 }
